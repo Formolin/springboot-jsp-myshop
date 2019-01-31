@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: liujiang
@@ -40,25 +41,40 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>我的商城</b></a>
+        <a href="#"><b>商城后台管理系统</b></a>
     </div>
+
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">欢迎管理员登录</p>
+        <p class="login-box-msg">欢迎管理员登录${cookie.check.value}</p>
         <form action="/login" method="post">
-            <div class="form-group has-feedback">
-                <input type="text" class="form-control" placeholder="用户名" name="username">
+            <div class="form-group has-feedback ">
+                <input type="text" class="form-control" placeholder="用户名" name="username" value="${cookie.usernameremeber.value}">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="密码" name="password">
+                <input type="password" class="form-control" placeholder="密码" name="password" value="${cookie.passwordremeber.value}">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
+            <%--登录失败弹出框--%>
+            <%--<c:if test="${error != null}" >--%>
+                <%--<div class="alert alert-danger alert-dismissible">--%>
+                    <%--<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>--%>
+                    <%--${error}--%>
+                <%--</div>--%>
+            <%--</c:if>--%>
+            <%--第二种写法--%>
+                <div class="alert alert-danger alert-dismissible" ${error == null?"style='display:none'" :"style='display:block'"}>
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                        ${error}
+                </div>
             <div class="row">
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
                         <label>
-                            <input type="checkbox"> 记住我
+                            <input type="checkbox" name="remeberme" ${cookie.check.value}> 记住我
+                            &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
+                            <input type="checkbox" name="autologin" > 自动登录
                         </label>
                     </div>
                 </div>

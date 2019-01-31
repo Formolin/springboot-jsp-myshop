@@ -8,7 +8,7 @@ public class UserDaoImpl implements UserDao{
 
     @Override
     public boolean login(String name, String password) {
-        if ("admin".equals(name) && "123".equals(password)){
+        if ("刘江".equals(name) && "123".equals(password)){
             return true;
         }
         return false;
