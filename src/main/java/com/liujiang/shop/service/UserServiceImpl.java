@@ -1,18 +1,20 @@
 package com.liujiang.shop.service;
 
-import com.liujiang.shop.dao.UserDao;
-import com.liujiang.shop.dao.UserDaoImpl;
+import com.liujiang.shop.dao.UserMapper;
+import com.liujiang.shop.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService{
+
     @Autowired
-    UserDao userDao;
+    UserMapper userMapper;
     @Override
     public boolean login(String name, String password) {
-        boolean login = userDao.login(name, password);
-        if (login){
+        System.out.println(name+"===="+password);
+        User u = userMapper.login(name, password);
+        if (u!=null){
             return  true;
         }
         return false;

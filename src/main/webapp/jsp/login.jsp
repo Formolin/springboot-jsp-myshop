@@ -1,3 +1,4 @@
+<%@ page import="java.net.URLDecoder" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -46,9 +47,10 @@
 
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">欢迎管理员登录${cookie.check.value}</p>
+        <p class="login-box-msg">欢迎管理员登录</p>
         <form action="/login" method="post">
             <div class="form-group has-feedback ">
+
                 <input type="text" class="form-control" placeholder="用户名" name="username" value="${cookie.usernameremeber.value}">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
